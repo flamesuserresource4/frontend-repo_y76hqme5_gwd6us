@@ -4,22 +4,22 @@ const categories = [
   {
     name: 'Software Engineering',
     tags: ['Full‑stack', 'Frontend', 'Backend', 'Mobile', 'DevOps'],
-    color: 'from-blue-500/15 to-blue-500/5',
+    accent: 'from-orange-500/15 to-orange-500/5',
   },
   {
     name: 'Design',
     tags: ['Product Design', 'UX Research', 'UI', 'Brand'],
-    color: 'from-fuchsia-500/15 to-fuchsia-500/5',
+    accent: 'from-amber-500/15 to-amber-500/5',
   },
   {
     name: 'Product & Strategy',
     tags: ['Product Manager', 'Program Manager', 'BizOps'],
-    color: 'from-emerald-500/15 to-emerald-500/5',
+    accent: 'from-orange-400/15 to-orange-400/5',
   },
   {
     name: 'Data & AI',
     tags: ['Data Science', 'ML Engineer', 'Analytics', 'MLOps'],
-    color: 'from-indigo-500/15 to-indigo-500/5',
+    accent: 'from-amber-400/15 to-amber-400/5',
   },
 ];
 
@@ -46,26 +46,28 @@ export default function TalentGrid() {
           {categories.map((c, i) => (
             <motion.div
               key={c.name}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className={`group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900`}
+              transition={{ duration: 0.55, delay: i * 0.05 }}
+              whileHover={{ y: -4 }}
+              className={`group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-[0_12px_40px_rgba(234,88,12,0.15)] dark:border-zinc-800 dark:bg-zinc-900`}
             >
-              <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${c.color} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+              <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${c.accent} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
               <div className="relative z-10">
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{c.name}</h3>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {c.tags.map((t) => (
                     <span
                       key={t}
-                      className="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-xs font-medium text-zinc-700 backdrop-blur transition-colors hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200"
+                      className="inline-flex items-center rounded-full border border-zinc-200 bg-white/80 px-3 py-1 text-xs font-medium text-zinc-800 backdrop-blur transition-all hover:border-orange-300 hover:text-orange-700 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:border-orange-500/60 dark:hover:text-orange-300"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent transition group-hover:ring-orange-500/25" />
             </motion.div>
           ))}
         </div>
